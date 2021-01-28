@@ -2,8 +2,7 @@
 Simple CMD CLI for training purposes
 
 TODO:
-* check in (https://github.com/devonfw-training/simple-cmd.git)
-* prepare jenkins (https://icsdtrainingcamp.s2-eu.capgemini.com/jenkins/job/psd-training-master)
+* prepare jenkins
 * extend Readme:
     * how to: import project/ build / deploy / run / test
     * how to extends commands
