@@ -13,6 +13,7 @@ TODO:
 * align features/bugs with training sessions
 * cleanup pom.xml: remove unnecessary dependencies
 * fix build: currently not possible run outside of Intellij (cmd)
+* adjust Devon IDE Settings
 * Eclipse project incl run config
 * Tests:
     * Write some working Unit-Tests
