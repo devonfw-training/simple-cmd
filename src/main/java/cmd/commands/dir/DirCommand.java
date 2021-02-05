@@ -21,9 +21,9 @@ public class DirCommand implements Runnable {
     @CommandLine.Option(names = {"-s", "--sort"})
     private String sortOder;
 
-    // TODO: 28.01.2021 introduce feature, print files with relative path
-    // TODO: 28.01.2021 introduce feature, pass desired path/directory as argument
-    // TODO: 28.01.2021 introduce feature, check if passed file path is a file
+    // TODO(Feature-1): introduce feature, print files with relative path (--short)
+    // TODO(Feature-2): introduce feature, pass desired path/directory as argument (--path)
+    // TODO(Feature-3): introduce feature, check if passed file path is a file (--check)
 
     @Override
     public void run() {
@@ -41,7 +41,7 @@ public class DirCommand implements Runnable {
     }
 
     private Comparator<File> getFileListComparator() {
-        // TODO: 28.01.2021 introduce bug, asc vs desc
+        // TODO(Issue-1): introduce bug, sorting direction is incorrect (asc vs desc)
         return Comparator.comparing(File::getName,
                 (s1, s2) -> Objects.equals(sortOder, "asc")
                         ? s1.compareTo(s2)
@@ -49,7 +49,7 @@ public class DirCommand implements Runnable {
     }
 
     private void printLine(File f) {
-        // TODO: 28.01.2021 introduce bug, a the path should be printed
+        // TODO(Issue-2): introduce bug, path should be printed only in specific conditions (file vs directory)
         if (filesOnly || !f.isDirectory()) {
             System.out.println(f.getAbsolutePath());
         } else {
