@@ -18,7 +18,7 @@ public class DirCommand implements Runnable {
     @CommandLine.Option(names = {"-f", "--files"})
     private boolean filesOnly;
 
-    @CommandLine.Option(names = {"-s", "--sort"})
+    @CommandLine.Option(names = {"-s", "--sort"}, description = "posible values are {asc, desc}")
     private String sortOder;
 
     // TODO(Feature-1): introduce feature, print files with relative path (--short)
