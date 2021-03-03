@@ -56,3 +56,4 @@ public class SimpleCmd {
       System.out.println("System.in was closed; exiting");
     }
   }
+}
