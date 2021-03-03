@@ -1,3 +1,12 @@
+#target folder
+target/
+
+#Eclipse settings should be ignored
+.settings/
+.classpath
+.project
+eclipse-target/
+
 # Compiled class file
 *.class
 
