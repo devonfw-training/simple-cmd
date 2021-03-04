@@ -15,14 +15,11 @@ pipeline {
         stage("Build/Test Server") {
             steps {
                 script {
-                    try {
+
                         withMaven(maven: mavenInstallation) {
                             sh "mvn clean verify -U"
                         }
-                    } catch (err) {
-                        step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/*.xml', allowEmptyResults: false])
-                        throw err
-                    }
+
                 }
             }
         }

@@ -10,6 +10,7 @@ import java.nio.file.attribute.FileAttribute;
 public class AbstractTest {
 
     protected static final FileAttribute<?>[] noAttributes = new FileAttribute[0];
+
     private final ByteArrayOutputStream outStreamCaptor = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
