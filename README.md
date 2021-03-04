@@ -18,15 +18,3 @@ Simple CMD CLI for training purposes
 * Tests:
     * Write some working Unit-Tests
     * provide information on how to prepare "test data"
-
-# Known bugs
-|Issue-#|Description|
-|---|---|
-| 1   |"dir" command: sorting direction is incorrect (asc vs desc) |
-| 2   |"dir" command: path should be printed only in specific conditions (file vs directory) |
-# New features
-|Feature-#|Description|     
-|---|---|     
-| 1 |"dir" command: print files with relative path (--short) |
-| 2 |"dir" command: pass desired path/directory as argument (--path) |
-| 3 |"dir" command:  introduce feature, check if passed file path is a file (--check) |

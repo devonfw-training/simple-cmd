@@ -1,6 +1,6 @@
 package cmd.commands.dir;
 
-import picocli.CommandLine;
+import cmd.SimpleCmd;
 import picocli.CommandLine.Command;
 
 import java.io.File;
@@ -8,18 +8,21 @@ import java.util.Comparator;
 import java.util.Objects;
 import java.util.stream.Stream;
 
+import static picocli.CommandLine.Option;
+
 @Command(
         name = "dir",
-        aliases = {"d"},
         description = "command can be used to list the files",
         mixinStandardHelpOptions = true)
 public class DirCommand implements Runnable {
 
-    @CommandLine.Option(names = {"-f", "--files"})
+    @Option(names = {"-f", "--files"}, description = "print only file names, directories will not be listed")
     private boolean filesOnly;
-
-    @CommandLine.Option(names = {"-s", "--sort"}, description = "posible values are {asc, desc}")
+    @Option(names = {"-s", "--sort"}, description = "posible values are {asc, desc}")
     private String sortOder;
+
+    public DirCommand() {
+    }
 
     // TODO(Feature-1): introduce feature, print files with relative path (--short)
     // TODO(Feature-2): introduce feature, pass desired path/directory as argument (--path)
@@ -27,7 +30,7 @@ public class DirCommand implements Runnable {
 
     @Override
     public void run() {
-        list(new File("."));
+        list(SimpleCmd.getCurrentLocation());
     }
 
     private void list(File dir) {
@@ -43,9 +46,9 @@ public class DirCommand implements Runnable {
     private Comparator<File> getFileListComparator() {
         // TODO(Issue-1): introduce bug, sorting direction is incorrect (asc vs desc)
         return Comparator.comparing(File::getName,
-                (s1, s2) -> Objects.equals(sortOder, "asc")
+                (s1, s2) -> Objects.equals(sortOder, "desc")
                         ? s1.compareTo(s2)
-                        : Objects.equals(sortOder, "desc") ? s2.compareTo(s1) : 0);
+                        : Objects.equals(sortOder, "asc") ? s2.compareTo(s1) : 0);
     }
 
     private void printLine(File f) {

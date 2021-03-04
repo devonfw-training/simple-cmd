@@ -1,13 +1,13 @@
 package cmd;
 
 import cmd.commands.BaseCommand;
-import picocli.CommandLine;
-
-import java.util.NoSuchElementException;
-import java.util.Scanner;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import picocli.CommandLine;
+
+import java.io.File;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 /**
  * Starting point of the Simple CMD. Contains the main method.
@@ -23,6 +23,8 @@ public class SimpleCmd {
    * register the {@link BaseCommand} in the new {@link CommandLine} Object
    */
   public static final CommandLine commandLine = new CommandLine(new BaseCommand());
+  private static File currentLocation = new File(".");
+
 
   /**
    * Main starting point of the CLI. Here we parse the arguments from the user.
@@ -55,5 +57,13 @@ public class SimpleCmd {
       // System.in has been closed
       System.out.println("System.in was closed; exiting");
     }
+  }
+
+  public static File getCurrentLocation() {
+    return currentLocation;
+  }
+
+  public static void setCurrentLocation(File currentLocation) {
+    SimpleCmd.currentLocation = currentLocation;
   }
 }

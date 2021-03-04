@@ -6,16 +6,17 @@ import picocli.CommandLine.Option;
 @Command(
         name = "hello",
         description = "Says hello",
-        aliases = {"hel"},
         mixinStandardHelpOptions = true,
         subcommands = {CommonNamesCommand.class})
 public class HelloCommand implements Runnable {
 
     @Option(names = {"-A", "--all"})
     private boolean allNames;
-
     @Option(names = {"-N", "--name"}, required = true)
     private String name;
+
+    public HelloCommand() {
+    }
 
     @Override
     public void run() {
