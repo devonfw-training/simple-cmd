@@ -15,11 +15,9 @@ pipeline {
         stage("Build/Test Server") {
             steps {
                 script {
-
-                        withMaven(maven: mavenInstallation) {
-                            sh "mvn clean verify -U"
-                        }
-
+                    withMaven(maven: mavenInstallation) {
+                        sh "mvn clean verify -U -DskipTest=true"
+                    }
                 }
             }
         }
