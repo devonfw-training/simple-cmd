@@ -2,13 +2,10 @@
 Simple CMD CLI for training purposes
 
 ## TODO:
-* prepare jenkins
+* prepare jenkins & repository
 * extend Readme:
-    * how to: import project/ build / deploy / run / test
+    * how to: import project/ build / run / test
     * how to extends commands
-* introduce extension points for features: 
-    * check if not too complex
-    * prepare a guide and document the worked out solution
+    * prepare trainer guide and document the worked out solution
 * adjust Devon IDE Settings
-* Tests:
-    * provide information on how to prepare "test data"
+* provide information on how to prepare "test data"

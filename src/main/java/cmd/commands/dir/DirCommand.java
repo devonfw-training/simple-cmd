@@ -24,10 +24,6 @@ public class DirCommand implements Runnable {
     public DirCommand() {
     }
 
-    // TODO(Feature-1): introduce feature, print files with relative path (--short)
-    // TODO(Feature-2): introduce feature, pass desired path/directory as argument (--path)
-    // TODO(Feature-3): introduce feature, check if passed file path is a file (--check)
-
     @Override
     public void run() {
         list(SimpleCmd.getCurrentLocation());
@@ -44,7 +40,6 @@ public class DirCommand implements Runnable {
     }
 
     private Comparator<File> getFileListComparator() {
-        // TODO(Issue-1): introduce bug, sorting direction is incorrect (asc vs desc)
         return Comparator.comparing(File::getName,
                 (s1, s2) -> Objects.equals(sortOder, "desc")
                         ? s1.compareTo(s2)
@@ -52,7 +47,6 @@ public class DirCommand implements Runnable {
     }
 
     private void printLine(File f) {
-        // TODO(Issue-2): introduce bug, path should be printed only in specific conditions (file vs directory)
         if (filesOnly || !f.isDirectory()) {
             System.out.println(f.getAbsolutePath());
         } else {
