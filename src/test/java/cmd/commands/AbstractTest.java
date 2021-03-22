@@ -22,6 +22,10 @@ public class AbstractTest {
         return originalOut;
     }
 
+    public String cleanOutput(String output) {
+      return output.replaceAll("\r\n", "");
+    }
+
     @BeforeEach
     public void setUpStreams() {
         System.setOut(new PrintStream(getOutStreamCaptor()));
