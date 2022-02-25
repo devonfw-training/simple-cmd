@@ -13,7 +13,6 @@ import java.time.format.DateTimeFormatter;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-@Disabled
 class DateCommandTest extends AbstractTest {
 
   private static final String DATE_COMMAND = "date";
@@ -34,6 +33,7 @@ class DateCommandTest extends AbstractTest {
   }
 
   @Test
+  @Disabled
   void getCurrentDateInDesiredFormat() throws IOException {
     // given
     String dateFormat = "dd-MM-yyyy";
