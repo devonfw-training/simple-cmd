@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repository" />
+      <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="sempoc-maven-dev-local" />
+      <option name="name" value="ONE.CRM Snapshots" />
+      <option name="url" value="https://sempoc-docker-dev.tools.msi.audi.com/artifactory/sempoc-maven-dev-local/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="sempoc-maven-remote" />
+      <option name="name" value="MuleSoft Mirror" />
+      <option name="url" value="https://sempoc-docker-dev.tools.msi.audi.com/artifactory/sempoc-maven-remote/" />
+    </remote-repository>
+  </component>
+</project>
