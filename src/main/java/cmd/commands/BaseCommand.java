@@ -15,11 +15,12 @@ import picocli.CommandLine.Command;
         subcommands = {DirCommand.class, DelCommand.class, CopyCommand.class})
 public class BaseCommand implements Runnable {
     public BaseCommand() {
+        /* intentionally empty */
     }
 
     @Override
     public void run() {
-        // nothing to do here
+        /* intentionally empty */
     }
 
 }

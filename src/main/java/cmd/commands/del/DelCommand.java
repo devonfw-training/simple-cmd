@@ -15,6 +15,7 @@ public class DelCommand implements Runnable {
     private File file;
 
     public DelCommand() {
+        /* intentionally empty */
     }
 
     @Override

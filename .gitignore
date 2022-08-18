@@ -7,6 +7,9 @@ target/
 .project
 eclipse-target/
 
+#IntelliJ IDEA settings should be ignored
+.idea/
+
 # Compiled class file
 *.class
 

@@ -7,32 +7,34 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.nio.file.attribute.FileAttribute;
 
-public class AbstractTest {
+import static java.lang.System.lineSeparator;
+
+public abstract class AbstractTest {
 
     protected static final FileAttribute<?>[] noAttributes = new FileAttribute[0];
+    private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    private final PrintStream originalOutputStream = System.out;
 
-    private final ByteArrayOutputStream outStreamCaptor = new ByteArrayOutputStream();
-    private final PrintStream originalOut = System.out;
-
-    public ByteArrayOutputStream getOutStreamCaptor() {
-        return outStreamCaptor;
+    public ByteArrayOutputStream getOutputStream() {
+        return outputStream;
     }
 
-    public PrintStream getOriginalOut() {
-        return originalOut;
+    private PrintStream getOriginalOutputStream() {
+        return originalOutputStream;
     }
 
     public String cleanOutput(String output) {
-      return output.replaceAll("\r\n", "");
+      return output.replaceAll(lineSeparator(), "");
     }
 
     @BeforeEach
-    public void setUpStreams() {
-        System.setOut(new PrintStream(getOutStreamCaptor()));
+    public void setupOutputStream() {
+        System.setOut(new PrintStream(getOutputStream()));
     }
 
     @AfterEach
-    public void restoreStreams() {
-        System.setOut(getOriginalOut());
+    public void restoreOutputStream() {
+        System.setOut(getOriginalOutputStream());
+        getOutputStream().reset();
     }
 }

@@ -2,12 +2,11 @@ package cmd.commands.dir;
 
 import cmd.SimpleCmd;
 import cmd.commands.AbstractTest;
-
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import picocli.CommandLine;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,11 +14,10 @@ import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Disabled
 class DirCommandTest extends AbstractTest {
 
     @Test
-    public void testDirWithF(@TempDir Path tempDir) throws IOException {
+    void testDirWithF(@TempDir Path tempDir) throws IOException {
         // given
         prepareTestFolder(tempDir);
         SimpleCmd.setCurrentLocation(tempDir.toFile());
@@ -28,13 +26,13 @@ class DirCommandTest extends AbstractTest {
         // when
         dirCommand.run();
         // then
-        String expected = tempDir.toAbsolutePath().toString() + "\\" + "myFile.txt";
-        String actual = getOutStreamCaptor().toString();
+        String expected = tempDir.toAbsolutePath() + File.separator + "myFile.txt";
+        String actual = getOutputStream().toString();
         assertTrue(actual.contains(expected), "Expected : " + expected + " But was: " + actual);
     }
 
     @Test
-    public void testDirWithoutArguments(@TempDir Path tempDir) throws IOException {
+    void testDirWithoutArguments(@TempDir Path tempDir) throws IOException {
         // given
         prepareTestFolder(tempDir);
         SimpleCmd.setCurrentLocation(tempDir.toFile());
@@ -43,8 +41,8 @@ class DirCommandTest extends AbstractTest {
         // when
         dirCommand.run();
         // then
-        String expected = tempDir.toAbsolutePath().toString() + "\\" + "myFile.txt";
-        String actual = getOutStreamCaptor().toString();
+        String expected = tempDir.toAbsolutePath() + File.separator + "myFile.txt";
+        String actual = getOutputStream().toString();
         assertTrue(actual.contains(expected), "Expected : " + expected + " But was: " + actual);
     }
 

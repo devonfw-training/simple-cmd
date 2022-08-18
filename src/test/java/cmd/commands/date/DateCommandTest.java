@@ -4,13 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import cmd.commands.AbstractTest;
 import cmd.commands.BaseCommand;
+import org.junit.jupiter.api.Disabled;
 import picocli.CommandLine;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 @Disabled
@@ -28,7 +28,7 @@ class DateCommandTest extends AbstractTest {
     commandLine.execute(args);
     // then
     String expected = LocalDate.now().toString();
-    String actual = getOutStreamCaptor().toString();
+    String actual = getOutputStream().toString();
     actual = cleanOutput(actual);
     assertEquals(actual, expected, "Expected : " + expected + " But was: " + actual);
   }
@@ -42,7 +42,7 @@ class DateCommandTest extends AbstractTest {
     commandLine.execute(args);
     // then
     String expected = LocalDate.now().format(DateTimeFormatter.ofPattern(dateFormat));
-    String actual = getOutStreamCaptor().toString();
+    String actual = getOutputStream().toString();
     actual = cleanOutput(actual);
     assertEquals(actual, expected, "Expected : " + expected + " But was: " + actual);
   }

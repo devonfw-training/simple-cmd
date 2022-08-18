@@ -21,6 +21,7 @@ public class CopyCommand implements Runnable {
     private File target;
 
     public CopyCommand() {
+        /* intentionally empty */
     }
 
     @Override
