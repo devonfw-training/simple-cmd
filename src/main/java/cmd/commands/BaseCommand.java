@@ -6,7 +6,13 @@ import cmd.commands.dir.DirCommand;
 import picocli.CommandLine.Command;
 
 /**
- * this is the basic Commmand object used to register all other Commands via subcommands parameter in @Command annotation
+ * Base Command Class
+ * <p/>
+ * This parent command class is meant to register other commands as subcommands.
+ * This can be done using the subcommands parameter of the @Command annotation.
+ * <p/>
+ * For a deeper understanding of how this is tied together please check the picocli documentation.
+ * @see <a href="https://picocli.info/">picocli Documentation</a>
  */
 @Command(
         name = "cmd",

@@ -9,7 +9,18 @@ import java.nio.file.attribute.FileAttribute;
 
 import static java.lang.System.lineSeparator;
 
-public abstract class AbstractTest {
+/**
+ * Abstract Command Test
+ * <p/>
+ * This class provides some glue code to make it easier to write tests for the different command types.
+ * The handling of output streams is done transparently, this happens automatically using JUnit 5 annotations.
+ * <p/>
+ * Moreover, the class provides a utility method for cleaning the output:
+ * @see AbstractCommandTest#cleanOutput(String)
+ * @see BeforeEach
+ * @see AfterEach
+ */
+public abstract class AbstractCommandTest {
 
     protected static final FileAttribute<?>[] noAttributes = new FileAttribute[0];
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -23,6 +34,13 @@ public abstract class AbstractTest {
         return originalOutputStream;
     }
 
+    /**
+     * Clean the given string by removing all (system-specific) line separators.
+     * <p/>
+     * On Windows this is {@code \r\n}, on *nix-like systems this is {@code \n}.
+     * @param output the output {@link String} to clean
+     * @return the output string with all (system-specific) line separators removed
+     */
     public String cleanOutput(String output) {
       return output.replaceAll(lineSeparator(), "");
     }

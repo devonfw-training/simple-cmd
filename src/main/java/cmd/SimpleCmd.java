@@ -11,20 +11,20 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
- * Starting point of the Simple CMD. Contains the main method.
+ * Entry point of the Simple CMD application for training purposes.
+ * <p/>
+ * This class provides the basic read-evaluate-print (REPL) loop, which enables the Simple CMD application to
+ * behave like a very basic command line interface (CLI).
  */
 public class SimpleCmd {
 
-  /**
-   * Logger to output useful information to the user
-   */
-  private static final Logger LOG = LoggerFactory.getLogger(SimpleCmd.class);
   /**
    * register the {@link BaseCommand} in the new {@link CommandLine} Object
    */
   public static final CommandLine commandLine = new CommandLine(new BaseCommand())
           .setErr(new PrintWriter(System.out));
 
+  private static final Logger LOG = LoggerFactory.getLogger(SimpleCmd.class);
 
   private static File currentLocation = new File(".");
 

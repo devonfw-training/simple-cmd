@@ -1,7 +1,7 @@
 package cmd.commands.dir;
 
 import cmd.SimpleCmd;
-import cmd.commands.AbstractTest;
+import cmd.commands.AbstractCommandTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import picocli.CommandLine;
@@ -14,7 +14,7 @@ import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class DirCommandTest extends AbstractTest {
+class DirCommandTest extends AbstractCommandTest {
 
     @Test
     void testDirWithF(@TempDir Path tempDir) throws IOException {

@@ -9,6 +9,11 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+/**
+ * "Delete File" command class
+ * <p/>
+ * Executing the command deletes a file, which is denoted by the parameter.
+ */
 @Command(
         name = "del",
         description = "Delete a file",
