@@ -10,14 +10,14 @@ import java.nio.file.StandardCopyOption;
 
 @Command(
         name = "copy",
-        description = "command can be used to copy file",
+        description = "Copy a file",
         mixinStandardHelpOptions = true)
 public class CopyCommand implements Runnable {
 
     @Parameters(index = "0", description = "path of the file to copy")
     private File sourceFile;
 
-    @Parameters(index = "1", description = "path to which the file will be copied")
+    @Parameters(index = "1", description = "path to copy file to")
     private File target;
 
     public CopyCommand() {

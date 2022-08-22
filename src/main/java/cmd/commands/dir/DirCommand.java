@@ -13,7 +13,7 @@ import static picocli.CommandLine.Option;
 
 @Command(
         name = "dir",
-        description = "command can be used to list the files",
+        description = "Displays files and directories of current working directory",
         mixinStandardHelpOptions = true)
 public class DirCommand implements Runnable {
 
