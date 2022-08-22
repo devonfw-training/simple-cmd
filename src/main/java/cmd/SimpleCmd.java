@@ -36,7 +36,7 @@ public class SimpleCmd {
   public static void main(String... args) {
 
     try (Scanner scanner = new Scanner(System.in)) {
-      String[] arguments = new String[0];
+      String[] arguments;
       String nextLine = "";
       LOG.info(">>> ");
       do {
