@@ -6,22 +6,24 @@ import org.slf4j.LoggerFactory;
 import picocli.CommandLine;
 
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
- * Starting point of the Simple CMD. Contains the main method.
+ * Entry point of the Simple CMD application for training purposes.
+ * <p/>
+ * This class provides the basic read-evaluate-print (REPL) loop, which enables the Simple CMD application to
+ * behave like a very basic command line interface (CLI).
  */
 public class SimpleCmd {
 
   /**
    * register the {@link BaseCommand} in the new {@link CommandLine} Object
    */
-  public static final CommandLine commandLine = new CommandLine(new BaseCommand());
+  public static final CommandLine commandLine = new CommandLine(new BaseCommand())
+          .setErr(new PrintWriter(System.out));
 
-  /**
-   * Logger to output useful information to the user
-   */
   private static final Logger LOG = LoggerFactory.getLogger(SimpleCmd.class);
 
   private static File currentLocation = new File(".");
@@ -34,30 +36,23 @@ public class SimpleCmd {
   public static void main(String... args) {
 
     try (Scanner scanner = new Scanner(System.in)) {
-      while (true) {
-        System.out.println("Please input a line");
-        long then = System.currentTimeMillis();
-        String line = scanner.nextLine();
-        long now = System.currentTimeMillis();
-        System.out.printf("Waited %.3fs for user input%n", (now - then) / 1000d);
-        System.out.printf("User input was: %s%n", line);
-
-        if (line.equals("exit")) {
-          break;
+      String[] arguments;
+      String nextLine = "";
+      LOG.info(">>> ");
+      do {
+        nextLine = scanner.nextLine();
+        if (0 < nextLine.length()) {
+          arguments = nextLine.split(" ");
+          commandLine.execute(arguments);
         }
+        LOG.info(">>> ");
+      } while (scanner.hasNextLine());
 
-        String[] arguments = line.split(" ");
-
-        LOG.debug("Current working directory: {}", System.getProperty("user.dir"));
-
-        if (commandLine.execute(arguments) == 0) {
-          LOG.debug("Commands were executed correctly");
-        }
-      }
     } catch (IllegalStateException | NoSuchElementException e) {
       // System.in has been closed
-      System.out.println("System.in was closed; exiting");
+      LOG.error("Error", e);
     }
+
   }
 
   /**
@@ -77,4 +72,5 @@ public class SimpleCmd {
 
     SimpleCmd.currentLocation = currentLocation;
   }
+
 }
