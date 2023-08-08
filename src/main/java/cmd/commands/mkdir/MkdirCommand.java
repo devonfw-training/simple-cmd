@@ -9,7 +9,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * TODO AKE
+ * Command to either add a file or directory which is specified by given parameters
  */
 @Command(
         name = "mkdir",
@@ -28,8 +28,9 @@ public class MkdirCommand implements Runnable {
 
     private static final Logger LOG = LoggerFactory.getLogger(MkdirCommand.class);
 
-    public MkdirCommand() {
-        /* nothing to do here */
+    public MkdirCommand()
+    {
+        // do nothing here
     }
 
     @Override
