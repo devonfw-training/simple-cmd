@@ -59,6 +59,8 @@ public class DirCommand implements Runnable {
       if (null != files) {
         Stream.of(files).sorted(getFileListComparator()).forEach(this::printLine);
       }
+    } else {
+      LOG.info("Der übergebene Pfad '{}' existiert nicht.\n", directory.toString());
     }
   }
 
