@@ -1,8 +1,6 @@
 package cmd.commands.dir;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -62,16 +60,18 @@ public class DirCommand implements Runnable {
       File[] files = directory.listFiles();
       if (null != files) {
         List<File> dateien = Stream.of(files).sorted(getFileListComparator()).collect(Collectors.toList());
-        List<List<String>> rows = new ArrayList<>();
-        List<String> headers = Arrays.asList("Path", "Type");
-        rows.add(headers);
         String type;
+        int maximaleLaenge = 0;
+        for (File datei : dateien) {
+          maximaleLaenge = Math.max(maximaleLaenge, datei.toString().length());
+        }
+        maximaleLaenge += 2;
+        System.out.println(String.format("%-" + maximaleLaenge + "s %s\n", "Path", "Type"));
         for (File datei : dateien) {
           type = datei.isFile() ? "file" : "directory";
-          rows.add(Arrays.asList(datei.toString(), type));
+          System.out.println(String.format("%-" + maximaleLaenge + "s %s\n", datei.toString(), type));
         }
 
-        System.out.println(formatAsTable(rows));
       }
     } else {
       LOG.info("The path '{}' does not exist.\n", directory.toString());
@@ -103,30 +103,5 @@ public class DirCommand implements Runnable {
     } else {
       LOG.info("{}\n", f.getAbsolutePath());
     }
-  }
-
-  /**
-   * Formatiere Ausgabe wie Tabelle
-   */
-  public static String formatAsTable(List<List<String>> rows) {
-
-    int[] maxLengths = new int[rows.get(0).size()];
-    for (List<String> row : rows) {
-      for (int i = 0; i < row.size(); i++) {
-        maxLengths[i] = Math.max(maxLengths[i], row.get(i).length());
-      }
-    }
-
-    StringBuilder formatBuilder = new StringBuilder();
-    for (int maxLength : maxLengths) {
-      formatBuilder.append("%-").append(maxLength + 2).append("s");
-    }
-    String format = formatBuilder.toString();
-
-    StringBuilder result = new StringBuilder();
-    for (List<String> row : rows) {
-      result.append(String.format(format, row.toArray(new String[0]))).append("\n");
-    }
-    return result.toString();
   }
 }
