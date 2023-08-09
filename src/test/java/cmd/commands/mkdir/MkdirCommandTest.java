@@ -1,4 +1,4 @@
-package cmd.commands.dir;
+package cmd.commands.mkdir;
 
 import cmd.SimpleCmd;
 import cmd.commands.AbstractCommandTest;
