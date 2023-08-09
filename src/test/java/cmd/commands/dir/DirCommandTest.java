@@ -35,6 +35,7 @@ class DirCommandTest extends AbstractCommandTest {
     String expected = tempDir.toAbsolutePath() + File.separator + "myFile.txt";
     String actual = getOutputStream().toString();
     assertTrue(actual.contains(expected), "Expected : " + expected + " But was: " + actual);
+    assertTrue(actual.contains("file"));
   }
 
   /**
@@ -54,6 +55,8 @@ class DirCommandTest extends AbstractCommandTest {
     String expected = tempDir.toAbsolutePath() + File.separator + "myFile.txt";
     String actual = getOutputStream().toString();
     assertTrue(actual.contains(expected), "Expected : " + expected + " But was: " + actual);
+    assertTrue(actual.contains("file"));
+    assertTrue(actual.contains("directory"));
   }
 
   /**
