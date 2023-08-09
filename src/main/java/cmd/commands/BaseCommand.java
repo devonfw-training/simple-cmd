@@ -21,7 +21,7 @@ import picocli.CommandLine.Command;
         name = "cmd",
         description = "base command",
         mixinStandardHelpOptions = true,
-        subcommands = {DirCommand.class, DelCommand.class, CopyCommand.class, CdCommand.class, MkdirCommand.class})
+        subcommands = {DirCommand.class, DelCommand.class, CopyCommand.class, MkdirCommand.class, CdCommand.class})
 public class BaseCommand implements Runnable {
     public BaseCommand() {
         /* intentionally empty */
